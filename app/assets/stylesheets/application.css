@@ -79,8 +79,8 @@ a {
 /* ---- xx ---- */
 
 #sidebar {
-  float: right;
-  width: 200px;
+  /* float: right;
+  width: 200px; */
 }
 
 /* ---- general layout ---- */
@@ -170,6 +170,11 @@ fieldset {
   width: 20%;
 }
 
+#order-pots fieldset,
+#order-flowers fieldset {
+  height: 100vh;
+}
+
 /* ---- users/orders ---- */
 
 .flex {
@@ -181,5 +186,5 @@ fieldset {
 }
 
 #user-profile ul {
-  width: 30%;
+  width: 50%;
 }

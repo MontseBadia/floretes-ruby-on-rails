@@ -8,12 +8,15 @@
   <h1>Your Orders</h1>
 
   <ul class="flex">
-  <% current_orders.each do |order| %>
+  <% current_orders.each_with_index do |order, j| %>
     <% order.pots.each_with_index do |pot, i| %>
       <li>
+        <div>
+          Order Id: <%= order.id %>
+        </div>
         <div class="flex f-column">Pot
           <%= image_tag(pot.image, size: "100x100") %>
-          <%= pot.name %>
+          <%= pot.name %> <br>
           <%= pot.dimensions %>
           <%= pot.material %>
           <%= pot.price %>
@@ -25,10 +28,14 @@
           <%= flower.name %>
         <% end %>
         </div>
+
+        <p>Order Price: <%= current_orders_individual_price[j] %> Euro</p>
       </li>
     <% end %>
   <% end %>
+
   </ul>
+  <h3>Total Price <%= current_orders_total_price %> Euro</h3>
 </section>
 
 

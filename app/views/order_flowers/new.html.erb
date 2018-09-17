@@ -12,6 +12,10 @@
               <p>Color: <%= flower.color %></p>
               <p>Origin: <%= flower.origin %></p>
               <p>Price: <%= flower.price %> Euro</p>
+            
+              <%= label_tag :quantity, "Quantity:" %>
+              <%= number_field_tag 'quantity[]', 0, within: 0..4 %>
+
             </li>
         <% end %>
       </ul>
