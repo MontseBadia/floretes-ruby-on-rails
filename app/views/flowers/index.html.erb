@@ -1,0 +1,21 @@
+<%# <h1>Please select the flowers</h1> %>
+
+<%= #form_for(@order_pot) do |f| %>
+  <%# <fieldset>
+    <ul> %>
+      <% #@flowers.each do |flower| %>
+          <li>
+            <%=# check_box_tag('flower_id[]', flower.id) %>
+            <p>Name: <%= #flower.name %></p>
+            <p>Color: <%= #flower.color %></p>
+            <p>Origin: <%= #flower.origin %></p>
+            <p>Price: <%= #flower.price %> Euro</p>
+          </li>
+      <% #end %>
+    <%# </ul>
+    <p> %>
+      <%= #f.submit 'Select Flowers' %>
+      <%= #link_to "Cancel" %>
+    <%# </p>
+  </fieldset> %>
+<% #end %> 

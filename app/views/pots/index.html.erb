@@ -1,0 +1,21 @@
+<h1>Please select a pot</h1>
+
+<%= #form_for(@order) do |f| %>
+  <fieldset>
+    <ul>
+      <%# @pots.each do |pot| %>
+          <li>
+            <%=# radio_button_tag(:pot_id, pot.id) %>
+            <p>Name: <%= #pot.name %></p>
+            <p>Dimensions: <%=# pot.dimensions %></p>
+            <p>Material: <%= #pot.material %></p>
+            <p>Price: <%= #pot.price %> Euro</p>
+          </li>
+      <% #end %>
+    </ul>
+    <p>
+      <%= #f.submit 'Select Pot' %>
+      <%= #link_to "Cancel" %>
+    </p>
+  </fieldset>
+<% #end %>

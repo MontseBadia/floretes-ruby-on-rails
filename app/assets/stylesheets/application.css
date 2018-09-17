@@ -1,0 +1,177 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ /* ---- reset ---- */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- typography ---- */
+
+body {
+  /* background-color: #ef9394  ; */
+  background-color: #77AF9C;
+  font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;
+  font-size: 14px;
+  line-height: 140%;
+  font-weight: lighter;
+  background-color: #F2F2F2;
+
+}
+
+h1 {
+  color: #02BDAD;
+  color: #D4C5E2;
+  color: #F3D8C7;
+  color: #B592A0;
+  color: #522B47;
+
+}
+
+h2 {}
+
+h3 {}
+
+h4 {
+  font-weight: lighter;
+  font-size: 11.5px;
+  letter-spacing: 0.1vw;
+  margin: 0;
+}
+
+p {
+  color: #2E6171;  
+  letter-spacing: 0.1vw;
+}
+
+a {
+  color: #522B47;
+  text-decoration: none;
+}
+
+#site-header a {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* ---- xx ---- */
+
+#sidebar {
+  float: right;
+  width: 200px;
+}
+
+/* ---- general layout ---- */
+
+.container {
+  margin: 0 50px;;
+}
+
+p {
+  margin-bottom: 16px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+a:hover {
+  text-decoration: none;
+  opacity: .7;
+}
+
+.center {
+  text-align: center;
+}
+
+.capitalize {
+  text-transform: capitalize;   
+}
+
+#main-body {
+  margin-top: 59px;
+}
+
+/* ---- header ---- */
+
+#site-header {
+  background-color: #F2F2F2;
+  background-color: #77AF9C;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+#site-header .header-content {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#site-header li {
+  display: inline-block;
+  margin-left: 30px;
+  line-height: 30px
+}
+
+/* ---- home ---- */
+
+#home {
+  background-image: url('basket.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 90vh;
+}
+
+/* ---- order-flowers/pots ---- */
+
+#order-flowers,
+#order-pots {
+  float: left;
+  width: 70vw;
+}
+
+#order-flowers ul,
+#order-pots ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#order-flowers li {
+  width: 20%;
+}
+
+/* ---- users/orders ---- */
+
+.flex {
+  display: flex;
+}
+
+.f-column {
+  flex-direction: column;
+}
