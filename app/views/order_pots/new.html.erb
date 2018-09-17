@@ -6,7 +6,7 @@
       <ul>
         <% @pots.each do |pot| %>
             <li>
-              <%= radio_button_tag(:pot_id, pot.id) %>
+              <%= radio_button_tag(:pot_id, pot.id, pot.id === 1, required: 'required') %>
               <%= image_tag(pot.image, size: "200x200") %>
               <p>Name: <%= pot.name %></p>
               <p>Dimensions: <%= pot.dimensions %></p>

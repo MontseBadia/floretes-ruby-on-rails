@@ -14,3 +14,51 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+function main() {
+    
+  var counter = 0;
+  var checkboxes = document.querySelectorAll('input[type=checkbox]');
+  
+  for (var i = 0; i < checkboxes.length; i++) {   
+    var checkbox = checkboxes[i];    
+
+    checkbox.addEventListener('change', function() {
+
+      if (this.checked) {
+        counter++;
+      } else {
+        counter--;
+      }
+
+      if (counter === 4 ) {
+        checkboxes.forEach(function (e) {
+          if(!e.checked) {
+            e.disabled = true;
+          }
+        })
+      } else {
+        checkboxes.forEach(function (e) {
+          if(e.disabled) {
+            e.disabled = false;
+          }
+        })
+      }
+      
+    })
+
+  }
+
+  // var checked = document.querySelectorAll('input:checked');
+
+  // if (checked.length === 0) {
+  //     // there are no checked checkboxes
+  //     console.log('no checkboxes checked');
+  // } else {
+  //     // there are some checked checkboxes
+  //     console.log(checked.length + ' checkboxes checked');
+  // }
+
+}
+
+window.addEventListener("load", main);
