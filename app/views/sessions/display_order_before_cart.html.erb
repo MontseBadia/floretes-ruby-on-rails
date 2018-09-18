@@ -18,10 +18,10 @@
         <% end %>
         </div>
 
-        <p>Order Price: <%=  %></p>
+        <p>Order Price: <%= @total_order_price %></p>
         <div>
           <button><%= link_to 'Add To Cart', carts_path, method: :post %></button>
-          Cancel
+          <%= link_to 'Cancel', root_path %>
         </div>
       </li>
 </ul>

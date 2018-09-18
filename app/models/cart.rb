@@ -5,4 +5,13 @@ class Cart < ApplicationRecord
   has_many :pots, through: :cart_pots
 
   accepts_nested_attributes_for :cart_pots
+
+  def total_price
+    cart_pots.sum(&:total_price)
+  end
+
+  def self.destroy_after_created_order(id)
+    cart = Cart.find(id)
+    cart.destroy 
+  end
 end

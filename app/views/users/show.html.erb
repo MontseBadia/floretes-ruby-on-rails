@@ -3,71 +3,93 @@
   <h1>Your Profile</h1>
 
   <header>
-    <h2><%= @user.email %></h2>
+    <h2><%= current_user.email %></h2>
   </header>
 
   <h1>Your Orders</h1>
+    
+    <% if @orders.size != 0 %>
 
-  <ul class="flex">
-  <% current_orders.each_with_index do |order, j| %>
-    <% order.pots.each_with_index do |pot, i| %>
-      <li>
-        <div>
-          Order Id: <%= order.id %>
-        </div>
-        <div class="flex f-column">Pot
-          <%= image_tag(pot.image, size: "100x100") %>
-          <%= pot.name %> <br>
-          <%= pot.dimensions %>
-          <%= pot.material %>
-          <%= pot.price %>
-        </div>
+      <ul class="flex f-wrap">
+        <% @orders.each_with_index do |order, j| %>
+          <% order.order_pots.each_with_index do |order_pot, i| %>
+            <li>
+              <div class="flex f-column">Pot
+                <%= image_tag(order_pot.pot.image, size: "100x100") %>
+                <%= order_pot.pot.name %> <br>
+                <%= order_pot.pot.dimensions %>
+                <%= order_pot.pot.material %>
+                <%= order_pot.pot.price %>
+              </div>
 
-        <div class="flex f-column">Flowers:
-        <% order.order_pots[i].flowers.each do |flower| %>
-          <%= image_tag(flower.image, size: "100x100") %>
-          <%= flower.name %>
+              <div class="flex f-column">Flowers:
+              <% order_pot.order_flowers.each do |order_flower| %>
+                <%= image_tag(order_flower.flower.image, size: "100x100") %>
+                <%= order_flower.flower.name %>
+                Units: <%= order_flower.units %>
+              <% end %>
+              </div>
+
+              <p>Individual Price: <%= order_pot.total %></p>
+
+            </li>
+          <% end %>
         <% end %>
-        </div>
+      </ul>
 
-        <p>Order Price: <%= order.total %> Euro</p>
-      </li>
+
+      <div>
+        <h3>Total price: <%= current_user.total_orders_price %> </h3>
+        <button><%= link_to 'Print' %></button>
+      </div>
+    
+    <% else %>
+      <p>You have not ordered anything yet!</p>
     <% end %>
-  <% end %>
-  </ul>
-  <h3>Total Price <%= current_user.orders.sum(&:total) %> Euro</h3>
-
-
 
   <h1>Your Cart</h1>
-  
-  <% @carts.each_with_index do |cart, j| %>
-    <% cart.cart_pots.each_with_index do |cart_pot, i| %>
-        <ul class="flex">
-          <li>
-            <div class="flex f-column">Pot
-              <%= image_tag(cart_pot.pot.image, size: "100x100") %>
-              <%= cart_pot.pot.name %> <br>
-              <%= cart_pot.pot.dimensions %>
-              <%= cart_pot.pot.material %>
-              <%= cart_pot.pot.price %>
-            </div>
+    
+    <% if @carts.size != 0 %>
 
-            <div class="flex f-column">Flowers:
-            <% cart_pot.flowers.each do |flower| %>
-              <%= image_tag(flower.image, size: "100x100") %>
-              <%= flower.name %>
-              Units:
-            <% end %>
-            </div>
+      <ul class="flex">
+        <% @carts.each_with_index do |cart, j| %>
+          <% cart.cart_pots.each_with_index do |cart_pot, i| %>
+            <li>
+              <div class="flex f-column">Pot
+                <%= image_tag(cart_pot.pot.image, size: "100x100") %>
+                <%= cart_pot.pot.name %> <br>
+                <%= cart_pot.pot.dimensions %>
+                <%= cart_pot.pot.material %>
+                <%= cart_pot.pot.price %>
+              </div>
 
-            <p>Order Price: <%=  %></p>
-            <div>
-              <button><%= link_to 'XXX' %></button>
-            </div>
-          </li>
-        </ul>
-    <% end %>
+              <div class="flex f-column">Flowers:
+              <% cart_pot.cart_flowers.each do |cart_flower| %>
+                <%= image_tag(cart_flower.flower.image, size: "100x100") %>
+                <%= cart_flower.flower.name %>
+                Units: <%= cart_flower.units %>
+              <% end %>
+              </div>
+
+              <p>Individual Price: <%= cart_pot.total_price %></p>
+              <button><%= link_to 'Delete', cart_pot_path(cart_pot), method: :delete %></button> 
+            </li>
+          <% end %>
+          <p>
+          <button><%= link_to 'Delete entire cart', cart_path(cart), method: :delete %></button>
+          <button><%= link_to 'Add further stuff to cart', display_new_order_pot_path %></button>
+          </p>
+        <% end %>
+      </ul>
+
+    <div>
+      <h3>Total price: <%= current_user.total_orders_price_in_cart %> </h3>
+      <button><%= link_to 'ORDER THESE PRODUCTS', new_order_path %></button>
+    </div>
+
+  <% else %>
+    <p>Your cart is currently empty!</p>
+    <button><%= link_to 'New Order', display_new_order_pot_path%></button>
   <% end %>
 
 </section>

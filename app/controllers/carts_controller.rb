@@ -11,7 +11,12 @@ class CartsController < ApplicationController
     # Cart.create!(user: current_user, #check if created properly!
     #   cart_pots_attributes: [pot: @pot, cart_flowers_attributes: [flower: flower, units: @flower_units[i]]])
 
-    cart = Cart.create!(user: current_user)
+    if current_user.carts.size === 0
+      cart = Cart.create!(user: current_user)
+    else 
+      cart = current_user.carts.last
+    end
+
     cart_pot = CartPot.create!(cart: cart, pot: @pot)
     @flower_ids.each_with_index do |id, i|
       flower = Flower.find(id)
@@ -32,6 +37,11 @@ class CartsController < ApplicationController
     # end
 
     redirect_to current_user
-    
+  end
+
+  def destroy
+    cart = Cart.find(params[:id])
+    cart.destroy 
+    redirect_to current_user, alert: "Successfully deleted!"
   end
 end

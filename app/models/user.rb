@@ -13,4 +13,12 @@ class User < ApplicationRecord
     user && user.authenticate(password)
   end
 
+  def total_orders_price_in_cart
+    carts.sum(&:total_price)
+  end
+
+  def total_orders_price
+    orders.sum(&:total_price)
+  end
+
 end

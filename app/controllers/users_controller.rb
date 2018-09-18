@@ -16,10 +16,8 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @carts = @user.carts
-
-
-
-
+    @orders = @user.orders
+    
     # @pot = Pot.find(session[:pot_id])
     # @flowers = []
     # session[:flower_ids].each do |id|

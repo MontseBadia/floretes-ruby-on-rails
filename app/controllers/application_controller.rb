@@ -17,6 +17,12 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def current_carts
+      if current_user
+        @carts = current_user.carts
+      end
+    end
+
     # def current_orders_individual_price
     #   if current_user
     #     @current_orders_price = []
@@ -43,6 +49,7 @@ class ApplicationController < ActionController::Base
     #   current_orders_individual_price.reduce(:+)
     # end
 
-    helper_method :current_user, :current_orders, :current_orders_individual_price, :current_orders_total_price
+    helper_method :current_user, :current_orders, :current_orders_individual_price, :current_orders_total_price,
+    :current_carts
 end
 

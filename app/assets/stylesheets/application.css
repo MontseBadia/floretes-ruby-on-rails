@@ -189,6 +189,14 @@ fieldset {
   flex-direction: column;
 }
 
+.f-wrap {
+  flex-wrap: wrap;
+}
+
 #user-profile ul {
-  width: 50%;
+  width: 80%;
+}
+
+#user-profile li {
+  border: 1px solid silver;
 }

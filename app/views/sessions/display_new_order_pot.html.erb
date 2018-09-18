@@ -17,7 +17,7 @@
       </ul>
       <p>
         <%= submit_tag 'Confirm' %>
-        <%= link_to "Cancel" %>
+        <%= link_to 'Cancel', root_path %>
       </p>
     </fieldset>
   <% end %>
@@ -29,10 +29,10 @@
 
 <% content_for(:side) %>
 <% if current_user %>
-  <h1>Your Orders</h1>
+  <h1>Your Cart</h1>
   
-  <% current_orders.each do |order| %>
-    <% order.pots.each_with_index do |pot, i| %>
+  <% current_carts.each do |cart| %>
+    <% cart.pots.each_with_index do |pot, i| %>
     <ul>
       <li>Pot: 
         <%= pot.name %>
@@ -41,12 +41,15 @@
         <%= pot.price %>
 
         <p>Flowers:
-        <% order.order_pots[i].flowers.each do |flower| %>
-          <%= flower.name %>
+        <% cart.cart_pots[i].flowers.each_with_index do |flower, j| %>
+          <%= flower.name %>(<%= cart.cart_pots[i].cart_flowers[j].units %>)
         <% end %>
         </p>
+        
+        <p>Individual Price: <%= cart.cart_pots[i].total_price %></p>
       </li>
     </ul>
     <% end %>
   <% end %>
+  <h3>Total price: <%= current_user.total_orders_price_in_cart %> </h3>
 <% end %>

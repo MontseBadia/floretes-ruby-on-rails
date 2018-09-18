@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if user = User.authenticate(params[:email], params[:password])
       session[:user_id] = user.id
       flash[:notice] = "Welcome back, #{user.name}!"
-      redirect_to user
+      redirect_to current_user
     else
       flash.now[:alert] = "Invalid email/password"
       render :new
@@ -55,6 +55,7 @@ class SessionsController < ApplicationController
     session[:units].each do |unit|
       @units << unit
     end
+    @total_order_price = total_order_price_before_cart(@pot, @flowers, @units)
   end
 
 
@@ -69,6 +70,12 @@ class SessionsController < ApplicationController
 
   def remove_zeros_from_array(array)
     array.delete_if { |x| x == '0' }
+  end
+
+  def total_order_price_before_cart(pot, flowers, units)
+    total_flowers = 0
+    flowers.each_with_index { |x, i| total_flowers += x.price.to_i * units[i].to_i }
+    pot.price + total_flowers
   end
 
 end

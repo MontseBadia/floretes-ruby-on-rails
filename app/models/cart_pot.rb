@@ -6,4 +6,8 @@ class CartPot < ApplicationRecord
   has_many :flowers, through: :cart_flowers
 
   accepts_nested_attributes_for :cart_flowers
+
+  def total_price
+    pot.price + cart_flowers.sum(&:total_price)
+  end
 end
