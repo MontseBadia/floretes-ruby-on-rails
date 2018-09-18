@@ -119,6 +119,10 @@ fieldset {
   border: 0;
 }
 
+.errors {
+  color: red;
+}
+
 /* ---- header ---- */
 
 #site-header {

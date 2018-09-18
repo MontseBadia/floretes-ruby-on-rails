@@ -1,0 +1,32 @@
+
+  <h1>Confirm To Add To Cart</h1>
+  <ul class="flex">
+      <li>
+        <div class="flex f-column">Pot
+          <%= image_tag(@pot.image, size: "100x100") %>
+          <%= @pot.name %> <br>
+          <%= @pot.dimensions %>
+          <%= @pot.material %>
+          <%= @pot.price %>
+        </div>
+
+        <div class="flex f-column">Flowers:
+        <% @flowers.each_with_index do |flower, i| %>
+          <%= image_tag(flower.image, size: "100x100") %>
+          <%= flower.name %>
+          Units: <%= @units[i] %>
+        <% end %>
+        </div>
+
+        <p>Order Price: <%=  %></p>
+        <div>
+          <button><%= link_to 'Add To Cart', carts_path, method: :post %></button>
+          Cancel
+        </div>
+      </li>
+</ul>
+
+
+
+
+

@@ -1,4 +1,5 @@
 <section id="user-profile">
+
   <h1>Your Profile</h1>
 
   <header>
@@ -29,16 +30,44 @@
         <% end %>
         </div>
 
-        <p>Order Price: <%= current_orders_individual_price[j] %> Euro</p>
+        <p>Order Price: <%= order.total %> Euro</p>
       </li>
     <% end %>
   <% end %>
-
   </ul>
-  <h3>Total Price <%= current_orders_total_price %> Euro</h3>
+  <h3>Total Price <%= current_user.orders.sum(&:total) %> Euro</h3>
+
+
+
+  <h1>Your Cart</h1>
+  
+  <% @carts.each_with_index do |cart, j| %>
+    <% cart.cart_pots.each_with_index do |cart_pot, i| %>
+        <ul class="flex">
+          <li>
+            <div class="flex f-column">Pot
+              <%= image_tag(cart_pot.pot.image, size: "100x100") %>
+              <%= cart_pot.pot.name %> <br>
+              <%= cart_pot.pot.dimensions %>
+              <%= cart_pot.pot.material %>
+              <%= cart_pot.pot.price %>
+            </div>
+
+            <div class="flex f-column">Flowers:
+            <% cart_pot.flowers.each do |flower| %>
+              <%= image_tag(flower.image, size: "100x100") %>
+              <%= flower.name %>
+              Units:
+            <% end %>
+            </div>
+
+            <p>Order Price: <%=  %></p>
+            <div>
+              <button><%= link_to 'XXX' %></button>
+            </div>
+          </li>
+        </ul>
+    <% end %>
+  <% end %>
+
 </section>
-
-
-
-
-

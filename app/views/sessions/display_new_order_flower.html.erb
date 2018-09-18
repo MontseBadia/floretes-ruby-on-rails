@@ -1,7 +1,7 @@
 <section id="order-flowers">
   <h1>Please select the flowers</h1>
 
-  <%= form_for(@order_flower) do |f| %>
+  <%= form_tag(display_new_order_flower_path) do |f| %>
     <fieldset>
       <ul>
         <% @flowers.each do |flower| %>
@@ -20,7 +20,7 @@
         <% end %>
       </ul>
       <p>
-        <%= f.submit 'Confirm' %>
+        <%= submit_tag'Confirm' %>
         <%= link_to "Cancel" %>
       </p>
     </fieldset>

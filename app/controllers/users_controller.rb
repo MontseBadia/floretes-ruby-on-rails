@@ -14,7 +14,22 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
+    @carts = @user.carts
+
+
+
+
+    # @pot = Pot.find(session[:pot_id])
+    # @flowers = []
+    # session[:flower_ids].each do |id|
+    #   @flowers << Flower.find(id)
+    # end
+    # @units = []
+    # session[:units].each do |unit|
+    #   @units << unit
+    # end
+
   end
 
   private 

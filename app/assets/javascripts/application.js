@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
-function main() {
+// function main() {
     
   var counter = 0;
   var checkboxes = document.querySelectorAll('input[type=checkbox]');
@@ -59,6 +59,6 @@ function main() {
   //     console.log(checked.length + ' checkboxes checked');
   // }
 
-}
+// }
 
 window.addEventListener("load", main);

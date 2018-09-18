@@ -1,0 +1,2 @@
+class CartPotsController < ApplicationController
+end

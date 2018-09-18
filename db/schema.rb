@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180917142214) do
+ActiveRecord::Schema.define(version: 20180918112743) do
+
+  create_table "cart_flowers", force: :cascade do |t|
+    t.integer  "flower_id"
+    t.integer  "cart_pot_id"
+    t.integer  "units"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["cart_pot_id"], name: "index_cart_flowers_on_cart_pot_id"
+    t.index ["flower_id"], name: "index_cart_flowers_on_flower_id"
+  end
+
+  create_table "cart_pots", force: :cascade do |t|
+    t.integer  "cart_id"
+    t.integer  "pot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_pots_on_cart_id"
+    t.index ["pot_id"], name: "index_cart_pots_on_pot_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
 
   create_table "flowers", force: :cascade do |t|
     t.string   "name"
@@ -25,8 +51,9 @@ ActiveRecord::Schema.define(version: 20180917142214) do
   create_table "order_flowers", force: :cascade do |t|
     t.integer  "order_pot_id"
     t.integer  "flower_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "units",        default: 0
     t.index ["flower_id"], name: "index_order_flowers_on_flower_id"
     t.index ["order_pot_id"], name: "index_order_flowers_on_order_pot_id"
   end

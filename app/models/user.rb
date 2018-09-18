@@ -6,9 +6,11 @@ class User < ApplicationRecord
   validates :password, presence: true
 
   has_many :orders, dependent: :destroy
+  has_many :carts, dependent: :destroy
 
   def self.authenticate(email, password)
     user = User.find_by(email: email)
     user && user.authenticate(password)
   end
+
 end
