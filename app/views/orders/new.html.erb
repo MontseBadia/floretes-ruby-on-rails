@@ -7,6 +7,7 @@
   <p>Email: <%= current_user.email %> </p>
 </div>
 
+<%= render 'shared/errors', object: @order %>
 <%= form_for(@order) do |f| %>
   <fieldset>
     <ul>

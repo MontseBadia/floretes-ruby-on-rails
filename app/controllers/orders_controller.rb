@@ -11,8 +11,8 @@ class OrdersController < ApplicationController
     @phone = params[:order]["phone"]
     @cart = current_user.carts.last # need to change
     
-    order = Order.create!(user: current_user, address: @address, phone: @phone, total_price: current_user.total_orders_price_in_cart)
-    if order.save
+    @order = Order.new(user: current_user, address: @address, phone: @phone, total_price: current_user.total_orders_price_in_cart)
+    if @order.save
       @cart.cart_pots.each do |cart_pot|
         order_pot = OrderPot.create!(order: order, pot: cart_pot.pot)
         cart_pot.cart_flowers.each do |cart_flower|
@@ -22,7 +22,8 @@ class OrdersController < ApplicationController
       Cart.destroy_after_created_order(@cart.id)
       redirect_to current_user #order confirmation
     else
-      redirect_to new_order_path
+      @carts = current_user.carts
+      render :new
     end
   end
 

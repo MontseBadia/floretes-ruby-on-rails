@@ -1,4 +1,5 @@
 
+
   <h1>Confirm To Add To Cart</h1>
   <ul class="flex">
       <li>
@@ -11,11 +12,11 @@
         </div>
 
         <div class="flex f-column">Flowers:
-        <% @flowers.each_with_index do |flower, i| %>
-          <%= image_tag(flower.image, size: "100x100") %>
-          <%= flower.name %>
-          Units: <%= @units[i] %>
-        <% end %>
+          <% @flowers.each do |value| %>
+            <%= image_tag(value[:flower].image, size: "100x100") %>
+            <%= value[:flower].name %>
+            Units: <%= value[:units] %>
+          <% end %>
         </div>
 
         <p>Order Price: <%= @total_order_price %></p>

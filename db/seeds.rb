@@ -21,21 +21,24 @@ Pot.create!([
     dimensions: "50x50x50 cm",
     material: "Ceramic",
     price: 25,
-    image: 'pot_black.png'
+    image: 'pot_black.png',
+    capacity: 15
   },
   {
     name: "Megatop",
     dimensions: "40x40x40 cm",
     material: "Ceramic",
     price: 18,
-    image: 'pot_wood.png'
+    image: 'pot_wood.png',
+    capacity: 10
   },
   {
     name: "Lili",
     dimensions: "30x30x30 cm",
     material: "Plastic",
     price: 10,
-    image: 'pot_stripes.png'
+    image: 'pot_stripes.png',
+    capacity: 5
   }
 ])
 

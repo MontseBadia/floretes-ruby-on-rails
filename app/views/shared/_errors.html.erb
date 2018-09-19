@@ -1,10 +1,10 @@
 <% if object.errors.any? %>
-  <section id="errors">
+  <section class="errors">
     <header>
       <h2>Form could not be saved!</h2>
       <h3>
         Please correct the following
-        <%= pluralize(object.errors.count, 'error') %>
+        <%= pluralize(object.errors.count, 'error')%>:
       </h3>
       <ul>
         <% object.errors.full_messages.each do |message| %>

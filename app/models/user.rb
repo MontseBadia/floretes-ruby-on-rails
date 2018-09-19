@@ -14,11 +14,11 @@ class User < ApplicationRecord
   end
 
   def total_orders_price_in_cart
-    carts.sum(&:total_price)
+    carts.sum(&:total_price) if carts.size != 0
   end
 
   def total_orders_price
-    orders.sum(&:total_price)
+    orders.sum(&:total) if orders.size != 0
   end
 
 end
