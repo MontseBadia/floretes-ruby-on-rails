@@ -9,40 +9,25 @@
   <h1>Your Orders</h1>
     
     <% if @orders.size != 0 %>
-
       <ul class="flex f-wrap">
         <% @orders.each_with_index do |order, j| %>
           <% order.order_pots.each_with_index do |order_pot, i| %>
             <li>
-              <div class="flex f-column">Pot
-                <%= image_tag(order_pot.pot.image, size: "100x100") %>
-                <%= order_pot.pot.name %> <br>
-                <%= order_pot.pot.dimensions %>
-                <%= order_pot.pot.material %>
-                <%= order_pot.pot.price %>
-              </div>
-
+              <%= render partial: 'pots/pot', locals: { pot: order_pot.pot } %>
               <div class="flex f-column">Flowers:
-              <% order_pot.order_flowers.each do |order_flower| %>
-                <%= image_tag(order_flower.flower.image, size: "100x100") %>
-                <%= order_flower.flower.name %>
-                Units: <%= order_flower.units %>
-              <% end %>
+                <%= render partial: 'flowers/flower', collection: order_pot.order_flowers, as: :order_flower %>
               </div>
-
               <p>Individual Price: <%= order_pot.total %></p>
-
             </li>
           <% end %>
         <% end %>
       </ul>
 
-
       <div>
         <h3>Total price: <%= current_user.total_orders_price %> </h3>
         <button><%= link_to 'Print' %></button>
       </div>
-    
+      
     <% else %>
       <p>You have not ordered anything yet!</p>
     <% end %>
@@ -50,27 +35,14 @@
   <h1>Your Cart</h1>
     
     <% if @carts.size != 0 %>
-
       <ul class="flex">
         <% @carts.each_with_index do |cart, j| %>
           <% cart.cart_pots.each_with_index do |cart_pot, i| %>
             <li>
-              <div class="flex f-column">Pot
-                <%= image_tag(cart_pot.pot.image, size: "100x100") %>
-                <%= cart_pot.pot.name %> <br>
-                <%= cart_pot.pot.dimensions %>
-                <%= cart_pot.pot.material %>
-                <%= cart_pot.pot.price %>
-              </div>
-
+              <%= render partial: 'pots/pot', locals: { pot: cart_pot.pot } %>
               <div class="flex f-column">Flowers:
-              <% cart_pot.cart_flowers.each do |cart_flower| %>
-                <%= image_tag(cart_flower.flower.image, size: "100x100") %>
-                <%= cart_flower.flower.name %>
-                Units: <%= cart_flower.units %>
-              <% end %>
+                <%= render partial: 'flowers/flower', collection: cart_pot.cart_flowers, as: :order_flower %>
               </div>
-
               <p>Individual Price: <%= cart_pot.total_price %></p>
               <button><%= link_to 'Delete', cart_pot_path(cart_pot), method: :delete %></button> 
             </li>
@@ -82,14 +54,14 @@
         <% end %>
       </ul>
 
-    <div>
-      <h3>Total price: <%= current_user.total_orders_price_in_cart %> </h3>
-      <button><%= link_to 'ORDER THESE PRODUCTS', new_order_path %></button>
-    </div>
+      <div>
+        <h3>Total price: <%= current_user.total_orders_price_in_cart %> </h3>
+        <button><%= link_to 'ORDER THESE PRODUCTS', new_order_path %></button>
+      </div>
 
-  <% else %>
-    <p>Your cart is currently empty!</p>
-    <button><%= link_to 'New Order', display_new_order_pot_path%></button>
-  <% end %>
+    <% else %>
+      <p>Your cart is currently empty!</p>
+      <button><%= link_to 'New Order', display_new_order_pot_path%></button>
+    <% end %>
 
 </section>

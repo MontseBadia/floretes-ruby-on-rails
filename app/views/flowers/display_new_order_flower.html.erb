@@ -4,20 +4,7 @@
   <%= form_tag(display_new_order_flower_path) do |f| %>
     <fieldset>
       <ul>
-        <% @flowers.each do |flower| %>
-            <li>
-              <%# check_box_tag("flower_ids[][#{flower.id}]", flower.id) %>
-              <%= image_tag(flower.image, size: "100x100") %>
-              <p>Name: <%= flower.name %></p>
-              <p>Color: <%= flower.color %></p>
-              <p>Origin: <%= flower.origin %></p>
-              <p>Price: <%= flower.price %> Euro</p>
-            
-              <%= label_tag "units[#{flower.id}]", "Quantity:" %>
-              <%= number_field_tag "units[#{flower.id}]", 0, within: 0..4 %>
-
-            </li>
-        <% end %>
+        <%= render partial: 'flowers/new_flower', collection: @flowers, as: :flower %>
       </ul>
       <p>
         <%= submit_tag'Confirm' %>
@@ -27,29 +14,6 @@
   <% end %> 
 </section>
 
-<% content_for(:side) %>
-<% if current_user %>
-  <h1>Your Cart</h1>
-
-  <% current_carts.each do |cart| %>
-    <% cart.pots.each_with_index do |pot, i| %>
-    <ul>
-      <li>Pot: 
-        <%= pot.name %>
-        <%= pot.dimensions %>
-        <%= pot.material %>
-        <%= pot.price %>
-
-        <p>Flowers:
-        <% cart.cart_pots[i].flowers.each_with_index do |flower, j| %>
-          <%= flower.name %>(<%= cart.cart_pots[i].cart_flowers[j].units %>)
-        <% end %>
-        </p>
-
-        <p>Individual Price: <%= cart.cart_pots[i].total_price %></p>
-      </li>
-    </ul>
-    <% end %>
-  <% end %>
-  <h3>Total price: <%= current_user.total_orders_price_in_cart %> </h3>
+<% content_for(:side) do %>
+  <%= render partial: 'carts/side_cart' %>
 <% end %>

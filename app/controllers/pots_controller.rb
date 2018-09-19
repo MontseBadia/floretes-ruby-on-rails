@@ -1,7 +1,17 @@
 class PotsController < ApplicationController
-  # def index
-  #   @pots = Pot.all
-  #   # @order_pot = OrderPot.new
-  #   @order = Order.new
-  # end
+  before_action :require_signin
+
+  def display_new_order_pot
+    @pots = Pot.all
+  end
+
+  def store_order_pots
+    pot_id = params[:pot_id]
+    if Pot.exists?(pot_id)
+      session[:pot_id] = pot_id
+      redirect_to display_new_order_flower_path
+    else
+      render :display_new_order_pot
+    end
+  end
 end

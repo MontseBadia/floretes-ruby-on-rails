@@ -1,0 +1,25 @@
+<% if current_user %>
+  <h1>Your Cart</h1>
+
+  <% current_carts.each do |cart| %>
+    <% cart.pots.each_with_index do |pot, i| %>
+    <ul>
+      <li>Pot: 
+        <%= pot.name %>
+        <%= pot.dimensions %>
+        <%= pot.material %>
+        <%= pot.price %>
+
+        <p>Flowers:
+        <% cart.cart_pots[i].flowers.each_with_index do |flower, j| %>
+          <%= flower.name %>(<%= cart.cart_pots[i].cart_flowers[j].units %>)
+        <% end %>
+        </p>
+
+        <p>Individual Price: <%= cart.cart_pots[i].total_price %></p>
+      </li>
+    </ul>
+    <% end %>
+  <% end %>
+  <h3>Total price: <%= current_user.total_orders_price_in_cart %> </h3>
+<% end %>

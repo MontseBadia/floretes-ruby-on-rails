@@ -1,0 +1,16 @@
+<h1>Confirm To Add To Cart</h1>
+  <ul class="flex">
+    <li>
+      <%= render partial: 'pots/pot', locals: { pot: @pot } %>
+      
+      <div class="flex f-column">Flowers:
+        <%= render partial: 'flowers/cart_flower', collection: @flowers, as: :flower %>
+      </div>
+
+      <p>Order Price: <%= @total_order_price %></p>
+      <div>
+        <button><%= link_to 'Add To Cart', carts_path, method: :post %></button>
+        <%= link_to 'Cancel', root_path %>
+      </div>
+    </li>
+</ul>

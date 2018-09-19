@@ -1,34 +1,8 @@
 <h1>Please complete to submit order</h1>
 
-<div>
-  <h3>Personal Data:</h3>
-  <p>Name: <%= current_user.name %> </p>
-  <p>Surname: <%= current_user.surname %> </p>
-  <p>Email: <%= current_user.email %> </p>
-</div>
-
+<%= render 'users/personal_data' %>
 <%= render 'shared/errors', object: @order %>
-<%= form_for(@order) do |f| %>
-  <fieldset>
-    <ul>
-      <li>
-        <%= f.label :address %>
-        <%= f.text_field :address %>
-      </li>
-      <li>
-        <%= f.label :phone %>
-        <%= f.number_field :phone %>
-      </li>
-    </ul>
-    <h2>Total price: <%= current_user.total_orders_price_in_cart %> </h2>
-    <h5>Payment process happens here ...</h5>
-  </fieldset>
-  <p>
-    <%= f.submit 'ORDER, FINALLY! ;)' %>
-  </p>
-  <button><%= link_to "Cancel", root_path %></button>
-  <button><%= link_to 'Go Back', current_user %></button>
-<% end %>
+<%= render 'orders/form', object: @order %>
 
 <hr>
 <h3>See Order Details</h3>
@@ -37,25 +11,12 @@
   <% @carts.each_with_index do |cart, j| %>
     <% cart.cart_pots.each_with_index do |cart_pot, i| %>
       <li>
-        <div class="flex f-column">Pot
-          <%= image_tag(cart_pot.pot.image, size: "100x100") %>
-          <%= cart_pot.pot.name %> <br>
-          <%= cart_pot.pot.dimensions %>
-          <%= cart_pot.pot.material %>
-          <%= cart_pot.pot.price %>
-        </div>
-
+        <%= render partial: 'pots/pot', locals: { pot: cart_pot.pot } %>    
         <div class="flex f-column">Flowers:
-        <% cart_pot.cart_flowers.each do |cart_flower| %>
-          <%= image_tag(cart_flower.flower.image, size: "100x100") %>
-          <%= cart_flower.flower.name %>
-          Units: <%= cart_flower.units %>
-        <% end %>
+          <%= render partial: 'flowers/flower', collection: cart_pot.cart_flowers, as: :order_flower %>
         </div>
-
         <p>Individual Price: <%= cart_pot.total_price %></p>
       </li>
     <% end %>
   <% end %>
 </ul>
-

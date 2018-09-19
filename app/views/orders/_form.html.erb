@@ -1,0 +1,21 @@
+<%= form_for(object) do |f| %>
+  <fieldset>
+    <ul>
+      <li>
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+      </li>
+      <li>
+        <%= f.label :phone %>
+        <%= f.number_field :phone %>
+      </li>
+    </ul>
+    <h2>Total price: <%= current_user.total_orders_price_in_cart %> </h2>
+    <h5>Payment process happens here ...</h5>
+  </fieldset>
+  <p>
+    <%= f.submit 'ORDER, FINALLY! ;)' %>
+  </p>
+  <button><%= link_to "Cancel", root_path %></button>
+  <button><%= link_to 'Go Back', current_user %></button>
+<% end %>

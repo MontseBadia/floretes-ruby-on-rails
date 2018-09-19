@@ -1,0 +1,10 @@
+  <li>
+    <%# check_box_tag("flower_ids[][#{flower.id}]", flower.id) %>
+    <%= image_tag(flower.image, size: "100x100") %>
+    <p>Name: <%= flower.name %></p>
+    <p>Color: <%= flower.color %></p>
+    <p>Origin: <%= flower.origin %></p>
+    <p>Price: <%= flower.price %> Euro</p>
+    <%= label_tag "units[#{flower.id}]", "Quantity:" %>
+    <%= number_field_tag "units[#{flower.id}]", 0, within: 0..4 %>
+  </li>

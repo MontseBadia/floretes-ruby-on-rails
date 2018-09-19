@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_signin, except: [:new, :create]
+
   def new
     @user = User.new
   end
@@ -17,17 +19,6 @@ class UsersController < ApplicationController
     @user = current_user
     @carts = @user.carts
     @orders = @user.orders
-    
-    # @pot = Pot.find(session[:pot_id])
-    # @flowers = []
-    # session[:flower_ids].each do |id|
-    #   @flowers << Flower.find(id)
-    # end
-    # @units = []
-    # session[:units].each do |unit|
-    #   @units << unit
-    # end
-
   end
 
   private 
