@@ -1,0 +1,20 @@
+<h1>Your Orders</h1>
+    
+<% if orders.size != 0 %>
+  <ul>
+    <% orders.each_with_index do |order, j| %>
+      <div class="flex f-wrap">
+      <%= render 'orders/order', order: order %>
+      </div>
+      <hr>
+    <% end %>
+  </ul>
+
+  <div>
+    <h3>Total price: <%= current_user.total_orders_price %> </h3>
+    <button><%= link_to 'Print' %></button>
+  </div>
+  
+<% else %>
+  <p>You have not ordered anything yet!</p>
+<% end %>

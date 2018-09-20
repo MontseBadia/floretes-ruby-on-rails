@@ -1,4 +1,4 @@
-<% if current_user && current_user.cart.cart_pots.size != 0 %>
+<% if current_user && current_cart.cart_pots.size != 0 %>
   <h1>Your Cart</h1>
 
   <% current_cart.pots.each_with_index do |pot, i| %>
@@ -10,12 +10,12 @@
         <%= pot.price %>
 
         <p>Flowers:
-        <% @cart.cart_pots[i].flowers.each_with_index do |flower, j| %>
-          <%= flower.name %>(<%= @cart.cart_pots[i].cart_flowers[j].units %>)
+        <% current_cart.cart_pots[i].flowers.each_with_index do |flower, j| %>
+          <%= flower.name %>(<%= current_cart.cart_pots[i].cart_flowers[j].units %>)
         <% end %>
         </p>
 
-        <p>Individual Price: <%= @cart.cart_pots[i].total_price %></p>
+        <p>Individual Price: <%= current_cart.cart_pots[i].total_price %></p>
       </li>
     </ul>
   <% end %>

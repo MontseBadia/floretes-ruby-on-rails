@@ -3,18 +3,15 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @user = current_user
-    @cart = @user.cart
   end
 
   def create
     @address = params[:order]['address']
     @phone = params[:order]['phone']
-    @cart = current_user.cart
 
     @order = Order.create!(user: current_user, address: @address, phone: @phone, total_price: current_user.total_orders_price_in_cart)
     if @order.valid?
-      @order.create_order_pot(@cart)
+      @order.create_order_pot(current_cart)
       @order.empty_cart
       redirect_to current_user # order confirmation
     else

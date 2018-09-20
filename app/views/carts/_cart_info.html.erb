@@ -1,0 +1,20 @@
+<h1>Your Cart</h1>
+    
+<% if current_cart.cart_pots.size !=0 %>
+  <ul class="flex">
+    <%= render 'carts/cart' %>
+    <p>
+    <button><%= link_to 'Empty entire cart', cart_empty_path, method: :delete %></button>
+    <button><%= link_to 'Add further stuff to cart', display_new_order_pot_path %></button>
+    </p>
+  </ul>
+
+  <div>
+    <h3>Total price: <%= current_user.total_orders_price_in_cart %> </h3>
+    <button><%= link_to 'ORDER THESE PRODUCTS', new_order_path %></button>
+  </div>
+
+<% else %>
+  <p>Your cart is currently empty!</p>
+  <button><%= link_to 'New Order', display_new_order_pot_path%></button>
+<% end %>

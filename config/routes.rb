@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get 'admin/privileges' => 'pages#privileges'
 
+  delete 'cart/empty' => 'carts#empty'
+
   get 'order/pots' => 'pots#display_new_order_pot', as: :display_new_order_pot
   post 'order/pots' => 'pots#store_order_pots', as: :store_order_pots
 

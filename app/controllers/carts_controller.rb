@@ -9,7 +9,7 @@ class CartsController < ApplicationController
     enough_capacity = enough_capacity?(flowers, pot_capacity)
 
     if number_flowers && enough_capacity
-      current_user.cart.create_cart_pot(pot, flowers)
+      current_cart.create_cart_pot(pot, flowers)
       redirect_to current_user
     else
       @flowers = Flower.all
@@ -19,10 +19,9 @@ class CartsController < ApplicationController
     end
   end
 
-  def destroy
-    cart = Cart.find(params[:id])
-    cart.destroy
-    redirect_to current_user, alert: 'Successfully deleted!'
+  def empty
+    current_cart.empty
+    redirect_to current_user
   end
 
   private

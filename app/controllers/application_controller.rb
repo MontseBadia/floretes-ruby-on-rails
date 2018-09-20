@@ -19,18 +19,9 @@ class ApplicationController < ActionController::Base
     User.find(session[:user_id]) if session[:user_id]
   end
 
-  def current_orders
-    if current_user
-      @orders = current_user.orders
-    end
-  end
-
   def current_cart
-    if current_user
-      @cart = current_user.cart
-    end
+    current_user.cart if current_user
   end
 
-  helper_method :current_user, :current_orders, :current_orders_individual_price,
-    :current_orders_total_price, :current_cart, :current_user_admin?
+  helper_method :current_user, :current_orders, :current_cart, :current_user_admin?
 end

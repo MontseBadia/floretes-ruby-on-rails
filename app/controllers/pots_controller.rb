@@ -1,10 +1,9 @@
 class PotsController < ApplicationController
   before_action :require_signin
-  before_action :require_admin, only: [:index, :new]
+  before_action :require_admin, only: %i[index new]
 
   def display_new_order_pot
     @pots = Pot.all
-    @cart = current_user.cart
   end
 
   def store_order_pots

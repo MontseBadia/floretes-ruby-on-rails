@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_signin, except: [:new, :create]
+  before_action :require_signin, except: %i[new create]
 
   def new
     @user = User.new
@@ -16,9 +16,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @cart = @user.cart
-    @orders = @user.orders
+    @orders = current_user.orders
+    @delete_cart = true
   end
 
   private

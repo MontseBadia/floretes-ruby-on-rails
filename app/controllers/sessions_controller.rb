@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     if user = User.authenticate(params[:email], params[:password])
@@ -8,7 +7,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Welcome back, #{user.name}!"
       redirect_to current_user
     else
-      flash.now[:alert] = "Invalid email/password"
+      flash.now[:alert] = 'Invalid email/password'
       render :new
     end
   end

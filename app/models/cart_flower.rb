@@ -3,6 +3,6 @@ class CartFlower < ApplicationRecord
   belongs_to :flower
 
   def total_price
-    flower.price * units if (flower && units)
+    flower.price * units if flower && units
   end
 end

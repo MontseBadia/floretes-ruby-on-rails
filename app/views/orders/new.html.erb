@@ -8,13 +8,5 @@
 <h3>See Order Details</h3>
 
 <ul class="flex">
-  <% @cart.cart_pots.each_with_index do |cart_pot, i| %>
-    <li>
-      <%= render partial: 'pots/pot', locals: { pot: cart_pot.pot } %>    
-      <div class="flex f-column">Flowers:
-        <%= render partial: 'flowers/flower', collection: cart_pot.cart_flowers, as: :order_flower %>
-      </div>
-      <p>Individual Price: <%= cart_pot.total_price %></p>
-    </li>
-  <% end %>
+  <%= render 'carts/cart' %>
 </ul>

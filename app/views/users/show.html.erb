@@ -1,65 +1,7 @@
 <section id="user-profile">
-
   <h1>Your Profile</h1>
-
-  <header>
-    <h2><%= current_user.email %></h2>
-  </header>
-
-  <h1>Your Orders</h1>
-    
-    <% if @orders.size != 0 %>
-      <ul class="flex f-wrap">
-        <% @orders.each_with_index do |order, j| %>
-          <% order.order_pots.each_with_index do |order_pot, i| %>
-            <li>
-              <%= render partial: 'pots/pot', locals: { pot: order_pot.pot } %>
-              <div class="flex f-column">Flowers:
-                <%= render partial: 'flowers/flower', collection: order_pot.order_flowers, as: :order_flower %>
-              </div>
-              <p>Individual Price: <%= order_pot.total %></p>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
-
-      <div>
-        <h3>Total price: <%= current_user.total_orders_price %> </h3>
-        <button><%= link_to 'Print' %></button>
-      </div>
-      
-    <% else %>
-      <p>You have not ordered anything yet!</p>
-    <% end %>
-
-  <h1>Your Cart</h1>
-    
-    <% if @cart.cart_pots.size !=0 %>
-      <ul class="flex">
-        <% @cart.cart_pots.each_with_index do |cart_pot, i| %>
-          <li>
-            <%= render partial: 'pots/pot', locals: { pot: cart_pot.pot } %>
-            <div class="flex f-column">Flowers:
-              <%= render partial: 'flowers/flower', collection: cart_pot.cart_flowers, as: :order_flower %>
-            </div>
-            <p>Individual Price: <%= cart_pot.total_price %></p>
-            <button><%= link_to 'Delete', cart_pot_path(cart_pot), method: :delete %></button> 
-          </li>
-        <% end %>
-        <p>
-        <button><%= link_to 'Delete entire cart', cart_path(@cart), method: :delete %></button>
-        <button><%= link_to 'Add further stuff to cart', display_new_order_pot_path %></button>
-        </p>
-      </ul>
-
-      <div>
-        <h3>Total price: <%= current_user.total_orders_price_in_cart %> </h3>
-        <button><%= link_to 'ORDER THESE PRODUCTS', new_order_path %></button>
-      </div>
-
-    <% else %>
-      <p>Your cart is currently empty!</p>
-      <button><%= link_to 'New Order', display_new_order_pot_path%></button>
-    <% end %>
-
+  
+  <%= render 'users/personal_data' %>
+  <%= render 'orders/orders', orders: @orders %>
+  <%= render 'carts/cart_info' %>
 </section>
