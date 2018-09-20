@@ -1,0 +1,9 @@
+<h1>These are the current flowers on stock:</h1>
+
+<ul class="flex f-wrap">
+  <%= render partial: 'flowers/flower_info', collection: @flowers, as: :flower %>
+</ul>
+
+<hr>
+<button><%= link_to 'Add New Flower', new_admin_flower_path %></button>
+<p><%= link_to 'Go Back', admin_privileges_path %></p>

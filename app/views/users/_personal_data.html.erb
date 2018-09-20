@@ -4,3 +4,7 @@
   <p>Surname: <%= current_user.surname %> </p>
   <p>Email: <%= current_user.email %> </p>
 </header>
+
+<% if current_user_admin? && !@buttons_off %>
+  <button>Contact</button>
+<% end %>

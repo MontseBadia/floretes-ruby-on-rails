@@ -1,6 +1,5 @@
 class PotsController < ApplicationController
   before_action :require_signin
-  before_action :require_admin, only: %i[index new]
 
   def display_new_order_pot
     @pots = Pot.all
@@ -13,13 +12,5 @@ class PotsController < ApplicationController
     else
       render :display_new_order_pot
     end
-  end
-
-  def index
-    @pots = Pot.all
-  end
-
-  def new
-    @pot = Pot.new
   end
 end

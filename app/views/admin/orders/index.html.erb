@@ -1,0 +1,8 @@
+<h1>These are all the orders:</h1>
+
+<ul>
+  <%= render partial: 'orders/order', collection: @orders, as: :order %>
+</ul>
+
+<hr>
+<p><%= link_to 'Go Back', admin_privileges_path %></p>

@@ -1,0 +1,4 @@
+<h1>Edit Pot</h1>
+
+<%= render 'shared/errors', object: @pot %>
+<%= render partial: 'admin/pots/form', locals: { pot: @pot, url: admin_pot_path} %>

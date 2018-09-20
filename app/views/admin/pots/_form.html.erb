@@ -1,0 +1,34 @@
+<%= form_for(pot, :url => url)do |f| %>
+  <fieldset>
+    <ul>
+      <li>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </li>
+      <li>
+        <%= f.label :dimensions %>
+        <%= f.text_field :dimensions %>
+      </li>
+      <li>
+        <%= f.label :material %>
+        <%= f.text_field :material %>
+      </li>
+      <li>
+        <%= f.label :price %>
+        <%= f.number_field :price %>
+      </li>      
+      <li>
+        <%= f.label :image %>
+        <%= f.text_field :image %>
+      </li>
+      <li>
+        <%= f.label :capacity %>
+        <%= f.text_field :capacity %>
+      </li>
+    </ul>
+  </fieldset>
+  <p>
+    <%= f.submit %>
+    <button><%= link_to "Cancel", admin_privileges_path %></button>
+  </p>
+<% end %>

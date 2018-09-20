@@ -1,0 +1,7 @@
+<h1>These are the current pots on stock:</h1>
+
+<%= render partial: 'pots/pot', collection: @pots, as: :pot %>
+
+<hr>
+<button><%= link_to 'Add New Pot', new_admin_pot_path %></button>
+<p><%= link_to 'Go Back', admin_privileges_path %></p>

@@ -1,0 +1,30 @@
+<%= form_for(flower, :url => url)do |f| %>
+  <fieldset>
+    <ul>
+      <li>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </li>
+      <li>
+        <%= f.label :color %>
+        <%= f.text_field :color %>
+      </li>
+      <li>
+        <%= f.label :origin %>
+        <%= f.text_field :origin %>
+      </li>
+      <li>
+        <%= f.label :price %>
+        <%= f.number_field :price %>
+      </li>      
+      <li>
+        <%= f.label :image %>
+        <%= f.text_field :image %>
+      </li>
+    </ul>
+  </fieldset>
+  <p>
+    <%= f.submit %>
+    <button><%= link_to "Cancel", admin_privileges_path %></button>
+  </p>
+<% end %>

@@ -1,0 +1,12 @@
+<li>
+  <%= image_tag(flower.image, size: "100x100") %>
+  <p>Name: <%= flower.name %></p>
+  <p>Color: <%= flower.color %></p>
+  <p>Origin: <%= flower.origin %></p>
+  <p>Price: <%= flower.price %> Euro</p>
+
+  <% if current_user_admin? %>
+    <button><%= link_to 'Edit', edit_admin_flower_path(flower.id) %></button>
+    <button><%= link_to 'Delete', admin_flower_path(flower.id), method: :delete, data: { confirm: 'Are you sure?' } %></button> 
+  <% end %>
+</li>

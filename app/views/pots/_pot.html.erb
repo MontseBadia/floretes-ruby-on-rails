@@ -4,9 +4,10 @@
   <%= pot.dimensions %>
   <%= pot.material %>
   <%= pot.price %>
+  <%= pot.capacity %>
 </div>
 
-<% if current_user_admin? %>
-  <button><%= link_to 'Edit', edit_pot_path(pot.id) %></button>
-  <button><%= link_to 'Delete', pot_path(pot.id), method: :destroy, data: { confirm: 'Are you sure?' } %></button> 
+<% if current_user_admin? && !@buttons_off %>
+  <button><%= link_to 'Edit', edit_admin_pot_path(pot.id) %></button>
+  <button><%= link_to 'Delete', admin_pot_path(pot.id), method: :delete, data: { confirm: 'Are you sure?' } %></button> 
 <% end %>

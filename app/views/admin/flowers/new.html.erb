@@ -1,0 +1,4 @@
+<h1>Add New Flower</h1>
+
+<%= render 'shared/errors', object: @flower %>
+<%= render partial: 'admin/flowers/form', locals: { flower: @flower, url: admin_flowers_path} %>

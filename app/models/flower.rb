@@ -5,7 +5,7 @@ class Flower < ApplicationRecord
   has_many :cart_flowers, dependent: :destroy
   has_many :cart_pots, through: :cart_flower
 
-  validates :name, uniqueness: true
+  validates :name, presence: true, uniqueness: true
   validates :price, numericality: {greater_than: 0}
   validates :color, format: { with: /[a-zA-Z]/ }
   validates :origin, format: { with: /[a-zA-Z]/ }

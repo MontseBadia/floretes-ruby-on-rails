@@ -1,11 +1,23 @@
-<% order.order_pots.each_with_index do |order_pot, i| %>
-  <li>
-    <%= render partial: 'pots/pot', locals: { pot: order_pot.pot } %>
-    <div class="flex f-column">Flowers:
-      <%= render partial: 'flowers/flower', collection: order_pot.order_flowers, as: :order_flower %>
-    </div>
-    <p>Individual Price: <%= order_pot.total %></p>
-  </li>
-<% end %>
+<div class="flex">
+  <div class="flex f-column"> 
+    <% if current_user_admin? %>
+      <p>
+        <%= render 'users/personal_data', locals: { current_user: order.user } %>
+      </p>
+      <p>Address: <%= order.address %></p>
+      <p>Phone: <%= order.phone %></p>
+    <% end %>
+  </div>
 
-<p> Total Order Price: <%= order.total %> </p>
+  <% order.order_pots.each_with_index do |order_pot, i| %>
+    <li>
+      <%= render partial: 'pots/pot', locals: { pot: order_pot.pot } %>
+      <div class="flex f-column">Flowers:
+        <%= render partial: 'flowers/flower', collection: order_pot.order_flowers, as: :order_flower %>
+      </div>
+      <p>Individual Price: <%= order_pot.total %></p>
+    </li>
+  <% end %>
+
+  <p> Total Order Price: <%= order.total %> </p>
+</div>
