@@ -10,8 +10,12 @@ class Cart < ApplicationRecord
     cart_pots.sum(&:total_price)
   end
 
-  def self.destroy_after_created_order(id)
-    cart = Cart.find(id)
-    cart.destroy 
+  def create_cart_pot(pot, flowers)
+    cart_pot = cart_pots.create(pot: pot)
+    cart_pot.create_carts_flowers(flowers)
+  end
+
+  def empty
+    cart_pots.destroy_all
   end
 end

@@ -6,7 +6,9 @@ class User < ApplicationRecord
   validates :password, presence: true
 
   has_many :orders, dependent: :destroy
-  has_many :carts, dependent: :destroy
+  has_one :cart, dependent: :destroy
+
+  after_create :create_cart! #---
 
   def self.authenticate(email, password)
     user = User.find_by(email: email)
@@ -14,11 +16,14 @@ class User < ApplicationRecord
   end
 
   def total_orders_price_in_cart
-    carts.sum(&:total_price) if carts.size != 0
+    cart.total_price
   end
 
   def total_orders_price
-    orders.sum(&:total) if orders.size != 0
+    orders.compact.sum(&:total)# if orders.size != 0
   end
 
+  def create_cart
+    cart = Cart.create
+  end
 end

@@ -4,26 +4,20 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @user = current_user
-    @carts = @user.carts
+    @cart = @user.cart
   end
 
   def create
-    @address = params[:order]['address'] #--> to access hash info!!! :)
+    @address = params[:order]['address']
     @phone = params[:order]['phone']
-    @cart = current_user.carts.last # need to change
+    @cart = current_user.cart
 
-    @order = Order.new(user: current_user, address: @address, phone: @phone, total_price: current_user.total_orders_price_in_cart)
-    if @order.save
-      @cart.cart_pots.each do |cart_pot|
-        order_pot = OrderPot.create!(order: @order, pot: cart_pot.pot)
-        cart_pot.cart_flowers.each do |cart_flower|
-          OrderFlower.create!(order_pot: order_pot, flower: cart_flower.flower, units: cart_flower.units)
-        end
-      end
-      Cart.destroy_after_created_order(@cart.id)
+    @order = Order.create!(user: current_user, address: @address, phone: @phone, total_price: current_user.total_orders_price_in_cart)
+    if @order.valid?
+      @order.create_order_pot(@cart)
+      @order.empty_cart
       redirect_to current_user # order confirmation
     else
-      @carts = current_user.carts
       render :new
     end
   end

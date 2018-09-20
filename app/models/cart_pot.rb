@@ -10,4 +10,8 @@ class CartPot < ApplicationRecord
   def total_price
     pot.price + cart_flowers.sum(&:total_price)
   end
+
+  def create_carts_flowers(flowers)
+    flowers.each_pair { |key, val| cart_flowers.create(flower: Flower.find(key), units: val) }
+  end
 end

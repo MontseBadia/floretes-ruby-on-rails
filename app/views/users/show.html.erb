@@ -34,24 +34,22 @@
 
   <h1>Your Cart</h1>
     
-    <% if @carts.size != 0 %>
+    <% if @cart.cart_pots.size !=0 %>
       <ul class="flex">
-        <% @carts.each_with_index do |cart, j| %>
-          <% cart.cart_pots.each_with_index do |cart_pot, i| %>
-            <li>
-              <%= render partial: 'pots/pot', locals: { pot: cart_pot.pot } %>
-              <div class="flex f-column">Flowers:
-                <%= render partial: 'flowers/flower', collection: cart_pot.cart_flowers, as: :order_flower %>
-              </div>
-              <p>Individual Price: <%= cart_pot.total_price %></p>
-              <button><%= link_to 'Delete', cart_pot_path(cart_pot), method: :delete %></button> 
-            </li>
-          <% end %>
-          <p>
-          <button><%= link_to 'Delete entire cart', cart_path(cart), method: :delete %></button>
-          <button><%= link_to 'Add further stuff to cart', display_new_order_pot_path %></button>
-          </p>
+        <% @cart.cart_pots.each_with_index do |cart_pot, i| %>
+          <li>
+            <%= render partial: 'pots/pot', locals: { pot: cart_pot.pot } %>
+            <div class="flex f-column">Flowers:
+              <%= render partial: 'flowers/flower', collection: cart_pot.cart_flowers, as: :order_flower %>
+            </div>
+            <p>Individual Price: <%= cart_pot.total_price %></p>
+            <button><%= link_to 'Delete', cart_pot_path(cart_pot), method: :delete %></button> 
+          </li>
         <% end %>
+        <p>
+        <button><%= link_to 'Delete entire cart', cart_path(@cart), method: :delete %></button>
+        <button><%= link_to 'Add further stuff to cart', display_new_order_pot_path %></button>
+        </p>
       </ul>
 
       <div>

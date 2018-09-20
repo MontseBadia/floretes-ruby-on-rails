@@ -10,4 +10,8 @@ class OrderPot < ApplicationRecord
   def total
     pot.price + order_flowers.sum(&:total)
   end
+
+  def create_orders_flowers(cart_flowers)
+    cart_flowers.each { |cart_flower| order_flowers.create(flower: cart_flower.flower, units: cart_flower.units) }
+  end
 end

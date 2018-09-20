@@ -5,3 +5,8 @@
   <%= pot.material %>
   <%= pot.price %>
 </div>
+
+<% if current_user_admin? %>
+  <button><%= link_to 'Edit', edit_pot_path(pot.id) %></button>
+  <button><%= link_to 'Delete', pot_path(pot.id), method: :destroy, data: { confirm: 'Are you sure?' } %></button> 
+<% end %>

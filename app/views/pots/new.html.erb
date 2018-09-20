@@ -1,0 +1,24 @@
+<h1>Add New Pot</h1>
+
+<%= form_for(@pot) do |f| %>
+  <fieldset>
+    <ul>
+      <li>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </li>
+      <li>
+        <%= f.label :dimensions %>
+        <%= f.text_field :dimensions %>
+      </li>
+      <li>
+        <%= f.label :material %>
+        <%= f.text_field :material %>
+      </li>
+    </ul>
+  </fieldset>
+<% end %>
+
+
+
+  
