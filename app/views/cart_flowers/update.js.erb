@@ -1,0 +1,3 @@
+$('#cart_pot_<%= @cart_flower.cart_pot.id %>').html('<%= j(render partial: "cart_pots/cart_pot", locals: { cart_pot: @cart_flower.cart_pot }) %>')
+$('#total_price').html('Total price: <%= current_user.total_orders_price_in_cart %>')
+

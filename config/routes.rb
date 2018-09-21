@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   root 'pages#home'
 
+  # patch 'cart_flowers/:id/add' => 'cartflowers#add_units', as: :add_cart_flower
+  # patch 'cart_flowers/:id/remove' => 'cartflowers#remove_units', as: :remove_cart_flower
+
   delete 'cart/empty' => 'carts#empty'
 
   get 'order/pots' => 'pots#display_new_order_pot', as: :display_new_order_pot

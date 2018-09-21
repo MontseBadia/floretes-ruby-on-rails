@@ -15,50 +15,71 @@
 //= require turbolinks
 //= require_tree .
 
+
 // function main() {
-    
-  var counter = 0;
-  var checkboxes = document.querySelectorAll('input[type=checkbox]');
+
+//   units_button = document.getElementById('update_units')
   
-  for (var i = 0; i < checkboxes.length; i++) {   
-    var checkbox = checkboxes[i];    
+//   units_button.addEventListener('click', () => {
+//     new_units = document.getElementById('new_units').value
+//     cart_flower_id = document.getElementById('cart_flower_id').value
+//     console.log(cart_flower_id)
+//     cart_flower = `id=${cart_flower_id}&units=${new_units}`
 
-    checkbox.addEventListener('change', function() {
+//     $.ajax({
+//       type: "PATCH",
+//       url: `/cart_flowers/${cart_flower_id}`,
+//       data: cart_flower,
+//       success: function(data) {
+//         console.log(data)
+//       }
+//     })
 
-      if (this.checked) {
-        counter++;
-      } else {
-        counter--;
-      }
+//   })
 
-      if (counter === 4 ) {
-        checkboxes.forEach(function (e) {
-          if(!e.checked) {
-            e.disabled = true;
-          }
-        })
-      } else {
-        checkboxes.forEach(function (e) {
-          if(e.disabled) {
-            e.disabled = false;
-          }
-        })
-      }
-      
-    })
+  
+// }
 
-  }
+// window.addEventListener("load", main);
 
-  // var checked = document.querySelectorAll('input:checked');
+// var counter = 0;
+// var checkboxes = document.querySelectorAll('input[type=checkbox]');
 
-  // if (checked.length === 0) {
-  //     // there are no checked checkboxes
-  //     console.log('no checkboxes checked');
-  // } else {
-  //     // there are some checked checkboxes
-  //     console.log(checked.length + ' checkboxes checked');
-  // }
+// for (var i = 0; i < checkboxes.length; i++) {   
+//   var checkbox = checkboxes[i];    
+
+//   checkbox.addEventListener('change', function() {
+
+//     if (this.checked) {
+//       counter++;
+//     } else {
+//       counter--;
+//     }
+
+//     if (counter === 4 ) {
+//       checkboxes.forEach(function (e) {
+//         if(!e.checked) {
+//           e.disabled = true;
+//         }
+//       })
+//     } else {
+//       checkboxes.forEach(function (e) {
+//         if(e.disabled) {
+//           e.disabled = false;
+//         }
+//       })
+//     }
+    
+//   })
 
 // }
 
-window.addEventListener("load", main);
+// var checked = document.querySelectorAll('input:checked');
+
+// if (checked.length === 0) {
+//     // there are no checked checkboxes
+//     console.log('no checkboxes checked');
+// } else {
+//     // there are some checked checkboxes
+//     console.log(checked.length + ' checkboxes checked');
+// }

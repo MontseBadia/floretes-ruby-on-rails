@@ -1,3 +1,11 @@
 <%= image_tag(order_flower.flower.image, size: "100x100") %>
 <%= order_flower.flower.name %>
 Units: <%= order_flower.units %>
+
+<%= form_for(order_flower, remote: true) do |f| %>
+  <p>
+    <%= f.label :units %>
+    <%= f.number_field :units, in: 0..4 %>
+  </p>
+  <%= f.submit 'Update' %>
+<% end %>

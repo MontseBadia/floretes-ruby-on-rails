@@ -1,13 +1,6 @@
 <% current_cart.cart_pots.each_with_index do |cart_pot, i| %>
-  <li>
-    <%= render partial: 'pots/pot', locals: { pot: cart_pot.pot } %>    
-    <div class="flex f-column">Flowers:
-      <%= render partial: 'flowers/flower', collection: cart_pot.cart_flowers, as: :order_flower %>
-    </div>
-    <p>Individual Price: <%= cart_pot.total_price %></p>
-    <% if @delete_cart %>
-      <button><%= link_to 'Delete', cart_pot_path(cart_pot), method: :delete %></button> 
-    <% end %>
+  <li id='cart_pot_<%= cart_pot.id %>'>
+    <%= render partial: 'cart_pots/cart_pot', locals: { cart_pot: cart_pot } %>
   </li>
 <% end %>
 

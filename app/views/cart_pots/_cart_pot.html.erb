@@ -1,0 +1,9 @@
+<%= render partial: 'pots/pot', locals: { pot: cart_pot.pot } %>    
+<div class="flex f-column">Flowers:
+  <%= render partial: 'flowers/flower', collection: cart_pot.cart_flowers, as: :order_flower %>
+</div>
+
+<p>Individual Price: <%= cart_pot.total_price %></p>
+<% if @delete_cart %>
+  <button><%= link_to 'Delete', cart_pot_path(cart_pot), method: :delete %></button> 
+<% end %>
