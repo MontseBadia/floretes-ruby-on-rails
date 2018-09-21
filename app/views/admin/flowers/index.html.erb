@@ -1,4 +1,10 @@
-<h1>These are the current flowers on stock:</h1>
+<h1>There are <%= pluralize(@flowers.size, 'flower') %> on stock:</h1>
+
+<div>
+  <%= form_tag admin_flowers_path, method: :get do %>
+    <%= select_tag 'sort', options_for_select(Flower::SORT_FILTER, selected: params[:sort]), prompt: @prompt, onchange: 'this.form.submit();' %>
+  <% end %>
+</div>
 
 <ul class="flex f-wrap">
   <%= render partial: 'flowers/flower_info', collection: @flowers, as: :flower %>

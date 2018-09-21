@@ -1,6 +1,12 @@
 <section id="order-pots">
   <h1>Please select a pot</h1>
 
+  <div>
+    <%= form_tag display_new_order_pot_path, method: :get do %>
+      <%= select_tag 'sort', options_for_select(Pot::SORT_FILTER, selected: params[:sort]), prompt: @prompt, onchange: 'this.form.submit();' %>
+    <% end %>
+  </div>
+
   <%= form_tag(display_new_order_pot_path) do |f| %>
     <fieldset>
       <ul>

@@ -54,7 +54,7 @@ Flower.create!([
   {
     name: 'Rose',
     color: 'Red',
-    origin: 'Italia',
+    origin: 'Italy',
     price: 3,
     image: 'flower_rose.png'
   },

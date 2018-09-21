@@ -1,6 +1,8 @@
 class Admin::PotsController < Admin::AdminController
   def index
+    @prompt = 'Sort by...'
     @pots = Pot.all
+    @pots = @pots.send(params[:sort]) unless params[:sort].blank?
   end
 
   def edit

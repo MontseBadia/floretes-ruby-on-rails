@@ -14,8 +14,8 @@ class CartsController < ApplicationController
     else
       @flowers = Flower.all
       flash.now[:alert] = 'Please select at least one flower' unless number_flowers
-      flash.now[:alert] = 'You have selected to many flowers! Maximum: #{pot_capacity}' unless enough_capacity
-      render :display_new_order_flower
+      flash.now[:alert] = "You have selected to many flowers! Maximum: #{pot_capacity}" unless enough_capacity
+      render template: 'flowers/display_new_order_flower'
     end
   end
 

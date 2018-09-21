@@ -1,17 +1,30 @@
 <section id="order-flowers">
   <h1>Please select the flowers</h1>
+  
+  <div>
+    <%= form_tag display_new_order_flower_path, method: :get do %>
+      <%= select_tag 'sort', options_for_select(Flower::SORT_FILTER, selected: params[:sort]), prompt: @prompt %>
+      <%= select_tag 'filter_country', options_for_select(Flower::COUNTRY_FILTER, selected: params[:filter_country]), prompt: @prompt_country %>
+      <%= select_tag 'filter_color', options_for_select(Flower::COLOR_FILTER, selected: params[:filter_color]), prompt: @prompt_color %>
+      <%= submit_tag 'Apply' %>
+    <% end %>
+  </div>
 
-  <%= form_tag(display_new_order_flower_path) do |f| %>
-    <fieldset>
-      <ul>
-        <%= render partial: 'flowers/new_flower', collection: @flowers, as: :flower %>
-      </ul>
-      <p>
-        <%= submit_tag'Confirm' %>
-        <%= link_to 'Cancel', root_path %>
-      </p>
-    </fieldset>
-  <% end %> 
+  <% if @flowers.size != 0 %>
+    <%= form_tag(display_new_order_flower_path) do |f| %>
+      <fieldset>
+        <ul>
+          <%= render partial: 'flowers/new_flower', collection: @flowers, as: :flower %>
+        </ul>
+        <p>
+          <%= submit_tag'Confirm' %>
+          <%= link_to 'Cancel', root_path %>
+        </p>
+      </fieldset>
+    <% end %> 
+  <% else %>
+    <p>Sorry, there are no flowers matching your request</p>
+  <% end %>
 </section>
 
 <% content_for(:side) do %>

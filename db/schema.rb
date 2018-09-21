@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180919160129) do
+ActiveRecord::Schema.define(version: 20180921085308) do
 
   create_table "cart_flowers", force: :cascade do |t|
     t.integer  "flower_id"
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 20180919160129) do
     t.string   "color"
     t.string   "origin"
     t.decimal  "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "image"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "image",      default: "flower_base.png"
   end
 
   create_table "order_flowers", force: :cascade do |t|
@@ -82,9 +82,9 @@ ActiveRecord::Schema.define(version: 20180919160129) do
     t.string   "dimensions"
     t.string   "material"
     t.decimal  "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "image"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "image",      default: "pot_base.png"
     t.integer  "capacity"
   end
 

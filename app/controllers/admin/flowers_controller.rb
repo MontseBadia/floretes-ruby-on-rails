@@ -1,6 +1,8 @@
 class Admin::FlowersController < Admin::AdminController
   def index
+    @prompt = 'Sort by...'
     @flowers = Flower.all
+    @flowers = @flowers.send(params[:sort]) unless params[:sort].blank?
   end
 
   def edit

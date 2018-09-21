@@ -1,4 +1,10 @@
-<h1>These are the current pots on stock:</h1>
+<h1>There are <%= pluralize(@pots.size, 'pot') %> on stock:</h1>
+
+<div>
+  <%= form_tag admin_pots_path, method: :get do %>
+    <%= select_tag 'sort', options_for_select(Pot::SORT_FILTER, selected: params[:sort]), prompt: @prompt, onchange: 'this.form.submit();' %>
+  <% end %>
+</div>
 
 <%= render partial: 'pots/pot', collection: @pots, as: :pot %>
 
