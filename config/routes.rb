@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :cart_flowers
   resources :cart_pots
   resources :carts

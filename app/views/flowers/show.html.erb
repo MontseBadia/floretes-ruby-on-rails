@@ -1,0 +1,22 @@
+<section class="container">
+  <h1>Here it is! <%= @flower.name %></h1>
+
+  <ul>
+    <%= render partial: 'flowers/flower_info', locals: { flower: @flower } %>
+  </ul>
+
+  <h3>Comments:</h3>
+    <div id="comments">
+    <% if @comments.size != 0 %>
+      <% @comments.each do |comment| %>
+        <p><%= comment.text %></p>
+        <button><%= link_to 'Delete', comment, method: :delete, remote: true %></button>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= form_tag flower_path, method: :patch, remote: true do %>
+    <p><%= text_area_tag :comments, nil, rows: 2, cols: 60, placeholder: 'Write a comment...', id: 'comment_body' %></p>
+    <p><%= submit_tag 'Add Comment' %></p>
+  <% end %>
+</section>

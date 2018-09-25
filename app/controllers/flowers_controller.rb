@@ -15,4 +15,14 @@ class FlowersController < ApplicationController
   def index
     @flowers = Flower.all
   end
+
+  def show
+    @flower = Flower.find(params[:id])
+    @comments = @flower.comments
+  end
+
+  def update
+    @flower = Flower.find(params[:id])
+    @comment = @flower.create_comment(params[:comments])
+  end
 end

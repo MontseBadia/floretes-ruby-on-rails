@@ -1,5 +1,7 @@
-<h1>Flowers</h1>
+<section class="container">
+  <h1>Flowers</h1>
 
-<ul class="flex f-wrap">
-  <%= render partial: 'flowers/flower_info', collection: @flowers, as: :flower %>
-</ul>
+  <% @flowers.each do |flower| %>
+    <p><%= link_to flower.name, flower %></p>
+  <% end %>
+</section>

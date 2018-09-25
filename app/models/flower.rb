@@ -1,6 +1,8 @@
 class Flower < ApplicationRecord
+  has_many :comments, dependent: :destroy
+
   has_one_attached :flower_avatar
-  
+
   # Paperclip
   has_attached_file :avatar
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
@@ -48,4 +50,8 @@ class Flower < ApplicationRecord
   scope :price_desc, -> { order(price: :desc) }
   scope :location, ->(country) { where(origin: country) }
   scope :color, ->(color) { where(color: color) }
+
+  def create_comment(content)
+    comments.create!(text: content)
+  end
 end
