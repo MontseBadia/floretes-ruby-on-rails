@@ -23,6 +23,6 @@ class FlowersController < ApplicationController
 
   def update
     @flower = Flower.find(params[:id])
-    @comment = @flower.create_comment(params[:comments])
+    @comment = @flower.create_comment(params[:comments], current_user)
   end
 end

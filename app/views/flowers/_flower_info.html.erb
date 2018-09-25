@@ -1,6 +1,6 @@
 <li>
   <% if flower.flower_avatar.attached? %>
-    <%= image_tag(flower.flower_avatar) %>
+    <%= image_tag(flower.flower_avatar, size: "100x100") %>
   <% end %>
 
   <% if flower.avatar.present? %>

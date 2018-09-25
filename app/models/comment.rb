@@ -1,5 +1,7 @@
 class Comment < ApplicationRecord
   belongs_to :flower
+  belongs_to :user
 
-  validates :text, allow_blank: true, length: { maximum: 200 }
+  validates :text, presence: true, length: { maximum: 200 }
+  validates :user, presence: true
 end

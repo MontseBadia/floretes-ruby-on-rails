@@ -1,1 +1,1 @@
-$('#comments').html('<% @comments.each do |comment| %><p><%= comment.text %></p><button><%= link_to 'Delete', comment, method: :delete, remote: true %></button><% end %>');
+$('#comments').html('<% @comments.each do |comment| %><h4><%= comment.user.name %> said:</h4><p><%= comment.text %></p><button><%= link_to 'Delete', comment, method: :delete, remote: true %></button><% end %>');

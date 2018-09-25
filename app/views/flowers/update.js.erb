@@ -1,2 +1,2 @@
-$('#comments').append("<p><%= j @comment.text %></p><button><%= escape_javascript link_to 'Delete', @comment, remote: true, method: :delete %></button>");
+$('#comments').append("<h4><%= j @comment.user.name %> said:</h4><p><%= j @comment.text %></p><button><%= escape_javascript link_to 'Delete', @comment, remote: true, method: :delete %></button>");
 $('#comment_body').val(""); <!-- sets text area back to empty -->

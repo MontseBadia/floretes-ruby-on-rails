@@ -51,7 +51,7 @@ class Flower < ApplicationRecord
   scope :location, ->(country) { where(origin: country) }
   scope :color, ->(color) { where(color: color) }
 
-  def create_comment(content)
-    comments.create!(text: content)
+  def create_comment(content, current_user)
+    comments.create!(text: content, user: current_user)
   end
 end

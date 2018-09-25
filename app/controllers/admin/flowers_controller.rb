@@ -30,7 +30,6 @@ class Admin::FlowersController < Admin::AdminController
 
   def create
     @flower = Flower.create(flower_params)
-    # @flower.flower_avatar.attach(flower_avatar_params)
     if @flower.valid?
       redirect_to admin_flowers_path, notice: 'Flower successfully created!'
     else
@@ -41,10 +40,6 @@ class Admin::FlowersController < Admin::AdminController
   private
 
   def flower_params
-    params.require(:flower).permit(:name, :color, :origin, :price, :image, :avatar)
-  end
-
-  def flower_avatar_params
-    params.require(:flower).permit(:flower_avatar)
+    params.require(:flower).permit(:name, :color, :origin, :price, :image, :avatar, :flower_avatar)
   end
 end
