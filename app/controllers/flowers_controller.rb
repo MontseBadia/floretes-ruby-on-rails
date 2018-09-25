@@ -11,4 +11,8 @@ class FlowersController < ApplicationController
     @flowers = @flowers.location(params[:filter_country]) unless params[:filter_country].blank?
     @flowers = @flowers.color(params[:filter_color]) unless params[:filter_color].blank?
   end
+
+  def index
+    @flowers = Flower.all
+  end
 end

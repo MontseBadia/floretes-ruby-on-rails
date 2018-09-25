@@ -1,4 +1,10 @@
 class Flower < ApplicationRecord
+  has_one_attached :flower_avatar
+  
+  # Paperclip
+  has_attached_file :avatar
+  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
   has_many :order_flowers, dependent: :destroy
   has_many :order_pots, through: :order_flowers
 

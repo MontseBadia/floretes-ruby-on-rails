@@ -1,4 +1,12 @@
 <li>
+  <% if flower.flower_avatar.attached? %>
+    <%= image_tag(flower.flower_avatar) %>
+  <% end %>
+
+  <% if flower.avatar.present? %>
+    <%= image_tag(flower.avatar.url, size: "100x100") %>
+  <% end %>
+
   <%= image_tag(flower.image, size: "100x100") %>
   <p>Name: <%= flower.name %></p>
   <p>Color: <%= flower.color %></p>
