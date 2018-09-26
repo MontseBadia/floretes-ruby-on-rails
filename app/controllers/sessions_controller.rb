@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   def create
     if user = User.authenticate(params[:email], params[:password])
-      UserMailer.welcome_email.deliver_now
+      # UserMailer.welcome_email.deliver_now
       session[:user_id] = user.id
       flash[:notice] = "Welcome back, #{user.name}!"
       redirect_to current_user
