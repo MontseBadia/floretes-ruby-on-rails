@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   get 'order/add_to_cart' => 'orders#display_order_before_cart', as: :display_order_before_cart
   post 'order/add_to_cart' => 'orders#add_order_to_cart', as: :add_order_to_cart
 
-  get '/404' => 'errors#not_found'
-  get '/422' => 'errors#unprocessable_entity'
-  get '/500' => 'errors#server_error'
+  get '404' => 'errors#not_found'
+  get '422' => 'errors#unprocessable_entity'
+  get '500' => 'errors#server_error'
 end
