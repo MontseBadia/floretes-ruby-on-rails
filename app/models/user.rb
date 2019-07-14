@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   after_create :create_cart! #---
 
+  scope :find_name, -> (term) { where('LOWER(name) like ?', "%#{term.downcase}%") }
+
   def self.authenticate(email, password)
     user = User.find_by(email: email)
     user && user.authenticate(password)

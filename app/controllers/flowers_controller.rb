@@ -13,7 +13,12 @@ class FlowersController < ApplicationController
   end
 
   def index
-    @flowers = Flower.all
+    @flowers = Flower.includes(:comments).all
+    # render json: @flowers
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @flowers }
+    end
   end
 
   def show

@@ -3,5 +3,11 @@
 
   <% @flowers.each do |flower| %>
     <p><%= link_to flower.name, flower %></p>
+
+      <% flower.comments.each do |comment| %>
+        <p>- <%= comment.user.name %>said: </p>
+        <p>- <%= comment.text %></p>
+      <% end %>
+
   <% end %>
 </section>

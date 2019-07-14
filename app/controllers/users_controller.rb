@@ -15,6 +15,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    # @users = User.find_name(params[:name])
+    @users = User.all
+    render json: @users, only: [:name, :surname, :email]
+  end
+
   def show
     @orders = current_user.orders
     @delete_cart = true

@@ -14,7 +14,7 @@ group :development, :test do
 end
 # PostgreSQL for Heroku ----!
 group :production do
-  gem 'pg' # --> 'postgreSQL'
+  # gem 'pg' # --> 'postgreSQL'
 end
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
